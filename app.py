@@ -73,7 +73,7 @@ def main():
         st.session_state.chat_history = None
 
     st.header("FinWise 🏦💱")
-    user_question = st.text_input("Ask a question about your documents:")
+    user_question = st.text_input("Ask a question about your Banking Statement:")
     if user_question:
         handle_userinput(user_question)
 
