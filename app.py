@@ -37,7 +37,7 @@ def get_vectorstore(text_chunks):
 
 
 def get_conversation_chain(vectorstore):   
-    llm = ChatOpenAI(model="gpt-3.5-turbo-16k-0613")
+    llm = ChatOpenAI()
     memory = ConversationBufferMemory(
         memory_key='chat_history', return_messages=True)
     conversation_chain = ConversationalRetrievalChain.from_llm(
@@ -63,8 +63,8 @@ def handle_userinput(user_question):
 
 def main():
     load_dotenv()
-    st.set_page_config(page_title="FinWise",
-                       page_icon="🏦")
+    st.set_page_config(page_title="Chat with multiple PDFs",
+                       page_icon=":books:")
     st.write(css, unsafe_allow_html=True)
 
     if "conversation" not in st.session_state:
@@ -72,8 +72,8 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("FinWise 🏦💱")
-    user_question = st.text_input("Ask a question about your Banking Statement: https://shorturl.at/rBDFL ")
+    st.header("Chat with multiple PDFs :books:")
+    user_question = st.text_input("Ask a question about your documents:")
     if user_question:
         handle_userinput(user_question)
 
